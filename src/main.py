@@ -6,7 +6,7 @@ from texts import read_timestamp
 def main():
     subprocess.call(['mkdir', './source'])
     # 動画をダウンロードします正しくダウンロードできなければ終了
-    if download_movie('https://www.youtube.com/watch?v=JyshDvB54aE') == 0:
+    if download_movie('https://www.youtube.com/watch?v=nZiPBqfjTec') == 0:
         print('Download successful')
     else:
         print('Download failed')

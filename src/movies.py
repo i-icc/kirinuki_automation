@@ -40,10 +40,11 @@ def remake_movies(file_path, title):
 
 
 def connecting_movies(file_path, files, title):
-    c = "concat:"
-    for i in files:
-        c += f"{file_path}/subtitles/{i}.mp4|"
-    subprocess.call(["ffmpeg","-i",f"{c[:-1]}","-c","copy",f"./movies/{title}.mp4"])
+    with open(f"{file_path}/movielist.txt", mode='w') as f:
+        for i in files:
+            # f.write(f"file '{file_path}/subtitles/{i}.mp4'\n")
+            f.write(f"file 'subtitles/{i}.mp4'\n")
+    subprocess.call(["ffmpeg","-f","concat","-i",f"{file_path}/movielist.txt","-c","copy",f"./movies/{title}.mp4"])
 
 
 def put_subtitle(movie_path, path, output_path):
